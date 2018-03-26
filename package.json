@@ -4,7 +4,7 @@
   "description": "Simple demo for development a general flow",
   "main": "src/index.js",
   "scripts": {
-    "test": "env",
+    "test": "exit 0",
     "deploy": "sls deploy -v",
     "merge": "curl -XPUT /repos/ojizero/devops-session/pulls/$TRAVIS_PULL_REQUEST/merge"
   },
