@@ -1,0 +1,30 @@
+{
+  "name": "devops-session",
+  "version": "0.1.0",
+  "description": "Simple demo for development a general flow",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ojizero/devops-session.git"
+  },
+  "keywords": [
+    "travis-ci",
+    "aws-lambda",
+    "serverless",
+    "serverless-framework",
+    "dynamodb",
+    "devops"
+  ],
+  "author": "ojizero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ojizero/devops-session/issues"
+  },
+  "homepage": "https://github.com/ojizero/devops-session#readme",
+  "devDependencies": {
+    "serverless": "^1.26.1"
+  }
+}
