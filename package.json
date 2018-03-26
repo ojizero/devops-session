@@ -6,7 +6,7 @@
   "scripts": {
     "test": "env",
     "deploy": "sls deploy -v",
-    "merge": "echo 'gonna do a merge here'"
+    "merge": "curl -XPUT /repos/ojizero/devops-session/pulls/$TRAVIS_PULL_REQUEST/merge"
   },
   "repository": {
     "type": "git",
