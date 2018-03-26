@@ -21,6 +21,12 @@ functions:
       - http:
           path: cookies/count
           method: get
+  counting-each-cookies:
+    handler: src/index.countEach
+    events:
+      - http:
+          path: cookies/count/split
+          method: get
 
 custom:
   users_table: users_table
