@@ -25,8 +25,8 @@ export default (event, context, callback) => {
 
       return currentCount + 1
     })
-    .catch(() => 0) // errors mean that the item doesn't exist
-    .then((newCount = 0) => {
+    .catch(() => 1) // errors mean that the item doesn't exist
+    .then(newCount => {
       return dynamo
         .putItem({
           Item: {
