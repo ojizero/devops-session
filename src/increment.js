@@ -1,7 +1,7 @@
 import { DynamoDB } from 'aws-sdk'
 
 export default (event, context, callback) => {
-  const queryParams = event.pathParameters || {}
+  const queryParams = event.queryStringParameters || {}
 
   const yourCookie = queryParams.my_cookie || 'no_cookie'
 
