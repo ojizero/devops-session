@@ -4,7 +4,7 @@
   "description": "Simple demo for development a general flow",
   "main": "src/index.js",
   "scripts": {
-    "test": "exit 0",
+    "test": "mocha-webpack 'test/**/*.spec.js'",
     "deploy": "sls deploy -v",
     "merge": "curl -XPUT https://api.github.com/repos/ojizero/devops-session/pulls/$TRAVIS_PULL_REQUEST/merge?access_token=$GITHUB_SECRET_TOKEN"
   },
@@ -27,11 +27,16 @@
   },
   "homepage": "https://github.com/ojizero/devops-session#readme",
   "devDependencies": {
+    "aws-lambda-mock-context": "^3.1.1",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^5.0.1",
+    "mocha-webpack": "^1.1.0",
     "serverless": "^1.26.1",
     "serverless-webpack": "^3.1.1",
     "webpack": "^3.3.0"
