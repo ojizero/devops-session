@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - node
+cache:
+  directories:
+    - node_modules
+script:
+  - npm install
+  - npm test
+branches:
+  only:
+    - master
+after_success:
+  - "npm run merge"
+  - "npm run deploy"
