@@ -6,7 +6,7 @@
   "scripts": {
     "test": "exit 0",
     "deploy": "sls deploy -v",
-    "merge": "curl -XPUT /repos/ojizero/devops-session/pulls/$TRAVIS_PULL_REQUEST/merge"
+    "merge": "curl -XPUT https://api.github.com/repos/ojizero/devops-session/pulls/$TRAVIS_PULL_REQUEST/merge?access_token=$GITHUB_SECRET_TOKEN"
   },
   "repository": {
     "type": "git",
