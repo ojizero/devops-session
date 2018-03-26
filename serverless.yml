@@ -38,8 +38,6 @@ resources:
         AttributeDefinitions:
           - AttributeName: cid
             AttributeType: S
-          - AttributeName: number_of_visits
-            AttributeType: N
         KeySchema:
           - AttributeName: cid
             KeyType: HASH
