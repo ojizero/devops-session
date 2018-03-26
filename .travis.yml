@@ -6,8 +6,10 @@ cache:
     - node_modules
 script:
   - npm install
-  - npm run deploy
+  - npm test
+branches:
+  only:
+    - master
 after_success:
-  - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
-  - "chmod a+x /tmp/travis-automerge"
-  - "/tmp/travis-automerge"
+  - "npm run merge"
+  - "npm run deploy"

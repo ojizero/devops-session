@@ -4,8 +4,9 @@
   "description": "Simple demo for development a general flow",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "sls deploy -v"
+    "test": "env",
+    "deploy": "sls deploy -v",
+    "merge": "echo 'gonna do a merge here'"
   },
   "repository": {
     "type": "git",
