@@ -49,17 +49,24 @@ export const increment = (event, context, callback) => {
     })
 }
 
-export const count = (event, context, callback) => {
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
+export const countAll = (event, context, callback) => {
+  const dynamo = new DynamoDB()
 
-  callback(null, response);
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
-};
+  return Promise.resolve()
+    .then(() => {
+      return dynamo
+        .scan({
+          TableName: process.env.DYNAMO_TABLE_NAME,
+        })
+        .promise()
+    })
+    .then(({ Items: items }) => {
+      return items.reduce((acc, item) => acc + Number(item.count.N), 0)
+    })
+    .then(total => {
+      return callback(null, { statusCode: 200, body: JSON.stringify({ total }) })
+    })
+    .catch(err => {
+      return callback(null, { statusCode: 500, body: JSON.stringify({ err }) })
+    })
+}

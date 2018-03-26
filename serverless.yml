@@ -16,12 +16,11 @@ functions:
           path: cookies/increment
           method: get
   counting-cookies:
-    handler: src/index.count
+    handler: src/index.countAll
     events:
       - http:
           path: cookies/count
           method: get
-
 
 custom:
   users_table: users_table
