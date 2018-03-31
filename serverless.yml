@@ -20,6 +20,12 @@ functions:
       - http:
           path: visits/record
           method: get
+  get_counts:
+    handler: handler.get_counts
+    events:
+      - http:
+          path: visits
+          method: get
 
 resources:
   Resources:

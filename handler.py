@@ -50,3 +50,29 @@ def increment (event, context):
         'statusCode': 200,
         'body': json.dumps(response),
     }
+
+def get_counts (event, context):
+    client = boto3.client('dynamodb')
+
+    visitor_id = event['requestContext']['identity']['sourceIp']
+
+    query_string = event.get('queryStringParameters')
+
+    if query_string is not None and 'visitor_id' in query_string:
+        visitor_id = query_string.get('visitor_id')
+
+        response = client.get_item(
+            TableName = table_name,
+            Key = {
+                'visitor_id': {
+                    'S': visitor_id,
+                },
+            },
+        )
+    else:
+        response = client.scan(TableName = table_name)
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps(response),
+    }
