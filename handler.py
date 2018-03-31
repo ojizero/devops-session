@@ -69,8 +69,14 @@ def get_counts (event, context):
                 },
             },
         )
+
+        response = {
+            'items': [response['Item']],
+        }
     else:
-        response = client.scan(TableName = table_name)
+        response = {
+            'items': client.scan(TableName = table_name)['Items'],
+        }
 
     return {
         'statusCode': 200,
