@@ -14,7 +14,7 @@ def insert_to_dynamo(event, context):
                 'S': 'some static id for now',
             },
             'visits': {
-                'N': randint(10, 1000),
+                'N': str(randint(10, 1000)),
             },
         }
     )
