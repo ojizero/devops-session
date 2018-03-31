@@ -5,10 +5,10 @@ language: python
 python:
   - '3.6'
 
-# Those are the scripts to be executed after
-# installing dependencies finishes
+# Run unit tests
 script:
-  - serverless deploy -v
+  - python test_handler.py
+  # - serverless deploy -v
 
 # Ensure we have NPM in order to use Serverless
 env:
@@ -17,9 +17,7 @@ before_install:
   - nvm install $NODE_VERSION
   - node --version
   - npm --version
-# Install sererless
+# Install dependencies
 install:
   - npm i -g serverless
-# Run unit tests
-after_install:
-  - python test_handler.py
+  - pip install boto3
