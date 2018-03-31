@@ -20,3 +20,6 @@ before_install:
 # Install sererless
 install:
   - npm i -g serverless
+# Run unit tests
+after_install:
+  - python test_handler.py
