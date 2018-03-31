@@ -21,14 +21,18 @@ functions:
           path: say/hello
           method: get
 
-# you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+# resources:
+#   Resources:
+#     DynamoTable:
+#       Type: AWS::DynamoDB::Table
+#       Properties:
+#         TableName: ${self:custom.users_table}
+#         AttributeDefinitions:
+#           - AttributeName: cid
+#             AttributeType: S
+#         KeySchema:
+#           - AttributeName: cid
+#             KeyType: HASH
+#         ProvisionedThroughput:
+#           ReadCapacityUnits: 1
+#           WriteCapacityUnits: 1
