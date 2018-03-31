@@ -38,7 +38,7 @@ def increment (event, context):
         TableName = table_name,
         Item = {
             'visitor_id': {
-                'S': 'some static id for now',
+                'S': str(visitor_id),
             },
             'visits': {
                 'N': str(old_visits + 1),
