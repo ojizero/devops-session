@@ -9,9 +9,7 @@ table_name = os.environ['DYNAMO_TABLE']
 def increment (event, context):
     client = boto3.client('dynamodb')
 
-    visitor_id = event \
-        .get('queryStringParameters', {}) \
-        .get('visitor_id', None)
+    visitor_id = event.get('queryStringParameters', {}).get('visitor_id', None)
 
     if visitor_id is None:
         visitor_id = event['requestContext']['identity']['sourceIp']
