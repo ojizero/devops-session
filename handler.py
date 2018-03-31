@@ -1,24 +1,25 @@
+import os
 import json
+import boto3
 
+from random import randint
 
-def hello(event, context):
-    body = {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "input": event
-    }
+def insert_to_dynamo(event, context):
+    client = boto3.client('dynamodb')
 
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(body)
-    }
+    response = client.put_item(
+        TableName = os.environ['DYNAMO_TABLE'],
+        Item = {
+            'visitor_id': {
+                'S': 'some static id for now',
+            },
+            'visits': {
+                'N': randint(10, 1000),
+            },
+        }
+    )
 
-    return response
-
-    # Use this code if you don't use the http event with the LAMBDA-PROXY
-    # integration
-    """
     return {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "event": event
+        'statusCode': 200,
+        'body': json.dumps(response),
     }
-    """

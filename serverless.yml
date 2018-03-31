@@ -5,34 +5,37 @@ provider:
   runtime: python3.6
   stage: dev
   region: us-east-1
+  environment:
+    DYNAMO_TABLE: ${self:custom.users_table}
   # iamRoleStatements:
   #   - Effect: "Allow"
   #     Action:
   #       - "dynamodb:*"
   #     Resource: '*'
-  # environment:
-  #   variable1: value1
 
 functions:
-  hello:
-    handler: handler.hello
+  insert_to_dynamo:
+    handler: handler.insert_to_dynamo
     events:
       - http:
-          path: say/hello
+          path: visits/record
           method: get
 
-# resources:
-#   Resources:
-#     DynamoTable:
-#       Type: AWS::DynamoDB::Table
-#       Properties:
-#         TableName: ${self:custom.users_table}
-#         AttributeDefinitions:
-#           - AttributeName: cid
-#             AttributeType: S
-#         KeySchema:
-#           - AttributeName: cid
-#             KeyType: HASH
-#         ProvisionedThroughput:
-#           ReadCapacityUnits: 1
-#           WriteCapacityUnits: 1
+resources:
+  Resources:
+    DynamoTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.users_table}
+        AttributeDefinitions:
+          - AttributeName: visitor_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: visitor_id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+custom:
+  users_table: users_table
