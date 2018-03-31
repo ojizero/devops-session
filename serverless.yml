@@ -14,8 +14,8 @@ provider:
       Resource: '*'
 
 functions:
-  insert_to_dynamo:
-    handler: handler.insert_to_dynamo
+  increment:
+    handler: handler.increment
     events:
       - http:
           path: visits/record
