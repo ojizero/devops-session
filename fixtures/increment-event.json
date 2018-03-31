@@ -1,0 +1,37 @@
+{
+  "resource": "/visits/record",
+  "path": "/visits/record",
+  "httpMethod": "GET",
+  "headers": null,
+  "queryStringParameters": null,
+  "pathParameters": null,
+  "stageVariables": null,
+  "requestContext": {
+    "path": "/visits/record",
+    "accountId": "076558544421",
+    "resourceId": "bbz7vu",
+    "stage": "test-invoke-stage",
+    "requestId": "test-invoke-request",
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "cognitoIdentityId": null,
+      "apiKey": "test-invoke-api-key",
+      "cognitoAuthenticationType": null,
+      "userArn": "arn:aws:iam::076558544421:root",
+      "apiKeyId": "test-invoke-api-key-id",
+      "userAgent": "aws-internal/3",
+      "accountId": "076558544421",
+      "caller": "076558544421",
+      "sourceIp": "test-invoke-source-ip",
+      "accessKey": "ASIAIHAFPCS3KMM5OHFQ",
+      "cognitoAuthenticationProvider": null,
+      "user": "076558544421"
+    },
+    "resourcePath": "/visits/record",
+    "httpMethod": "GET",
+    "extendedRequestId": "test-invoke-extendedRequestId",
+    "apiId": "qbsolr10wh"
+  },
+  "body": null,
+  "isBase64Encoded": false
+}
