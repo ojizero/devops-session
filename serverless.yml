@@ -7,11 +7,11 @@ provider:
   region: us-east-1
   environment:
     DYNAMO_TABLE: ${self:custom.users_table}
-  # iamRoleStatements:
-  #   - Effect: "Allow"
-  #     Action:
-  #       - "dynamodb:*"
-  #     Resource: '*'
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"
+      Resource: '*'
 
 functions:
   insert_to_dynamo:
