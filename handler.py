@@ -24,10 +24,10 @@ def increment (event, context):
                 'visitor_id': {
                     'S': visitor_id,
                 },
-            }
+            },
             AttributesToGet = [
                 'visits'
-            ]
+            ],
         )
 
         old_visits = response['Item']['visits']['N']
@@ -43,7 +43,7 @@ def increment (event, context):
             'visits': {
                 'N': str(old_visits + 1),
             },
-        }
+        },
     )
 
     return {
