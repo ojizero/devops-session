@@ -5,11 +5,6 @@ language: python
 python:
   - '3.6'
 
-# Run unit tests
-script:
-  - python test_handler.py
-  # - serverless deploy -v
-
 # Ensure we have NPM in order to use Serverless
 env:
   - NODE_VERSION="9"
@@ -21,3 +16,11 @@ before_install:
 install:
   - npm i -g serverless
   - pip install boto3
+
+# Run unit tests
+script:
+  - python test_handler.py
+  # - serverless deploy -v
+
+after_success:
+  - sls deploy -v
