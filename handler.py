@@ -30,7 +30,7 @@ def increment (event, context):
             ],
         )
 
-        old_visits = response['Item']['visits']['N']
+        old_visits = int(response['Item']['visits']['N'])
     except:
         pass
 
