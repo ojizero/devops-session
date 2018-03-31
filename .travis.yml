@@ -1,5 +1,22 @@
+# Main language in use
 language: python
+
+# Python version
 python:
   - '3.6'
+
+# Those are the scripts to be executed after
+# installing dependencies finishes
 script:
   - serverless deploy -v
+
+# Ensure we have NPM in order to use Serverless
+env:
+  - NODE_VERSION="9"
+before_install:
+  - nvm install $NODE_VERSION
+  - node --version
+  - npm --version
+# Install sererless
+install:
+  - npm i -g serverless
