@@ -9,10 +9,12 @@ table_name = os.environ['DYNAMO_TABLE']
 def increment (event, context):
     client = boto3.client('dynamodb')
 
-    visitor_id = event.get('queryStringParameters', {}).get('visitor_id', None)
+    visitor_id = event['requestContext']['identity']['sourceIp']
 
-    if visitor_id is None:
-        visitor_id = event['requestContext']['identity']['sourceIp']
+    query_string = event.get('queryStringParameters')
+
+    if query_string is not None and 'visitor_id' in query_string:
+        visitor_id = query_string.get('visitor_id')
 
     old_visits = 0
     try:
