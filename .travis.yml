@@ -4,7 +4,7 @@ python:
   - '3.6'
 
 install:
-  - nvm 8
+  - nvm install 8
   - npm i -g serverless
 
 script:
