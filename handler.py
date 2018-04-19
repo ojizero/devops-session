@@ -31,7 +31,7 @@ def increment(event, context):
     )
 
     return {
-        'statusCode': 404,
+        'statusCode': 200,
         'body': json.dumps({ 'new_count': count }),
     }
 
