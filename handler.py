@@ -4,21 +4,18 @@ import boto3
 def increment(event, context):
     client = boto3.client('dynamodb')
 
-    client.put_item(
+    response = client.get_item(
         TableName='users_table',
-        Item={
+        Key={
             'id': {
                 'S': 'hello',
-            },
-            'count': {
-                'N': '0',
             },
         },
     )
 
     return {
         'statusCode': 200,
-        'body': json.dumps({ 'hello': 'annajah' }),
+        'body': json.dumps(response),
     }
 
     # Use this code if you don't use the http event with the LAMBDA-PROXY
