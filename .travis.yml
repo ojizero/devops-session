@@ -8,4 +8,5 @@ install:
   - npm i -g serverless
 
 script:
+  - python handler_test.py
   - sls deploy -v
