@@ -6,6 +6,7 @@ python:
 install:
   - nvm install 8
   - npm i -g serverless
+  - pip install boto3
 
 script:
   - python handler_test.py
