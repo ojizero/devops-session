@@ -5,30 +5,39 @@ provider:
   runtime: python3.6
   stage: dev
   region: us-east-1
-  # iamRoleStatements:
-  #   - Effect: "Allow"
-  #     Action:
-  #       - "dynamodb:*"
-  #     Resource: '*'
-  # environment:
-  #   variable1: value1
+  environment:
+    DYNAMODB_TABLE: ${self:custom.DYNAMODB_TABLE}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"
+      Resource: '*'
 
 functions:
-  hello:
-    handler: handler.hello
+  increment:
+    handler: handler.increment
     events:
       - http:
-          path: say/hello
+          path: visits/add
           method: get
 
-# you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.DYNAMODB_TABLE}
+
+custom:
+  DYNAMODB_TABLE: users_table
