@@ -9,4 +9,6 @@ install:
 
 script:
   - python handler_test.py
+
+after_success:
   - sls deploy -v
